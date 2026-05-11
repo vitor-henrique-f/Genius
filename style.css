@@ -8,8 +8,7 @@
 body {
   margin: 0;
   overflow: hidden;
-  background-image: url(assets/Captura\ de\ tela\ 2026-05-10\ 212627.png);
-  background-size: cover;
+  background-image: url(assets/shiny-textured-background.jpg);
 }
 
 header {
@@ -39,8 +38,8 @@ header {
 }
 
 .light-mode {
-  --header: rgb(204, 102, 18);
-  --fCor: rgb(204, 102, 18);
+  --header: rgb(151, 151, 255);
+  --fCor: rgb(151, 151, 255);
   --tfCor: rgba(0, 0, 0, 0.63);
   --footer: #ffffff;
   --text: black;

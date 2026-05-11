@@ -42,8 +42,8 @@ header {
 }
 
 .light-mode {
-  --header: rgb(204, 102, 18);
-  --fCor: rgb(204, 102, 18);
+  --header: rgb(151, 151, 255);
+  --fCor: rgb(151, 151, 255);
   --tfCor: rgba(0, 0, 0, 0.63);
   border-bottom: rgba(0, 0, 0, 0.473) solid 0.5px;
   --footer: #ffffff;
@@ -57,7 +57,7 @@ header {
   --cGithub: rgb(255, 255, 255);
   --cgtHover: rgb(0, 0, 0);
   --cBack: linear-gradient(to right, rgb(189, 27, 121), rgb(73, 0, 156));
-  --bBack: rgba(251, 255, 0, 0.562);
+  --bBack: rgb(151, 151, 255);
   --cbBorder: rgba(0, 0, 0, 0.411);
   --bShadow: rgba(0, 0, 0, 0.5);
   --tBox: rgb(0, 0, 0);
