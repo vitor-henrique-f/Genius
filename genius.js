@@ -3,12 +3,8 @@ const startButton = document.getElementById("bMenu");
 const buttonText = document.getElementById("tBMenu");
 const board = document.querySelector(".genius-board");
 
-// som
 const crystalSound = new Audio("assets/657946__lilmati__horror-inspect-sound-ui-or-in-game-notification-02.wav");
 crystalSound.volume = 0.5;
-
-// debug
-const DEBUG_ROUND = 1;
 
 let sequence = [];
 let playerSequence = [];
@@ -22,61 +18,37 @@ let activeCrystals = 4;
 const roundMessage = document.createElement("div");
 document.body.appendChild(roundMessage);
 
-roundMessage.style.position = "fixed";
-roundMessage.style.top = "50%";
-roundMessage.style.left = "50%";
-roundMessage.style.transform = "translate(-50%, -50%)";
+Object.assign(roundMessage.style, {
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  padding: "35px 80px",
+  borderRadius: "24px",
+  background: "rgba(10,10,35,0.92)",
+  backdropFilter: "blur(18px)",
+  border: "1px solid rgba(255,255,255,0.15)",
+  fontSize: "64px",
+  fontWeight: "900",
+  fontFamily: "Arial",
+  color: "white",
+  opacity: "0",
+  transition: "all .45s ease",
+  zIndex: "9999"
+});
 
-roundMessage.style.padding = "35px 80px";
-roundMessage.style.borderRadius = "24px";
-
-roundMessage.style.background = "rgba(10, 10, 35, 0.92)";
-roundMessage.style.backdropFilter = "blur(18px)";
-roundMessage.style.border = "1px solid rgba(255,255,255,0.15)";
-roundMessage.style.boxShadow = `
-  0 0 30px rgba(138,43,226,0.35),
-  inset 0 0 20px rgba(255,255,255,0.05)
-`;
-
-roundMessage.style.fontSize = "64px";
-roundMessage.style.fontWeight = "900";
-roundMessage.style.fontFamily = "Arial, sans-serif";
-roundMessage.style.letterSpacing = "4px";
-
-roundMessage.style.color = "white";
-roundMessage.style.textShadow = "0 0 18px rgba(168,85,247,0.8)";
-
-roundMessage.style.opacity = "0";
-roundMessage.style.pointerEvents = "none";
-roundMessage.style.transition = "all 0.45s ease";
-roundMessage.style.zIndex = "9999";
-roundMessage.style.textAlign = "center";
-
-// mostrar aviso
 function showMessage(text) {
   roundMessage.textContent = text;
-
-  roundMessage.style.opacity = "0";
-  roundMessage.style.transform = "translate(-50%, -50%) scale(0.85)";
-
-  setTimeout(() => {
-    roundMessage.style.opacity = "1";
-    roundMessage.style.transform = "translate(-50%, -50%) scale(1)";
-  }, 50);
+  roundMessage.style.opacity = "1";
 
   setTimeout(() => {
     roundMessage.style.opacity = "0";
-    roundMessage.style.transform = "translate(-50%, -50%) scale(1.08)";
   }, 2000);
 }
 
-function playCrystalSound() {
+function flash(card) {
   crystalSound.currentTime = 0;
   crystalSound.play();
-}
-
-function flash(card) {
-  playCrystalSound();
 
   card.classList.add("active");
 
@@ -95,28 +67,69 @@ function playSequence() {
   playerSequence = [];
 
   sequence.forEach((index, i) => {
-    setTimeout(() => {
-      flash(crystals[index]);
-    }, i * 800);
+    setTimeout(() => flash(crystals[index]), i * 700);
   });
 
   setTimeout(() => {
     canClick = true;
-  }, sequence.length * 800);
+  }, sequence.length * 700 + 300);
 }
 
 function getMaxLevel() {
-  if (round === 1) return 7;
-  return 8;
+  if (round === 1) return 3;
+  if (round === 2) return 4;
+  if (round === 3) return 5;
+  if (round === 4) return 6;
+  if (round === 5) return 7;
+  if (round === 6) return 8;
+  if (round === 7) return 9;
+  if (round === 8) return 10;
+  if (round === 9) return 11;
+  if (round === 10) return 12;
 }
 
 function unlockRound3() {
   crystals[4].classList.remove("hidden");
   crystals[5].classList.remove("hidden");
 
-  board.classList.add("round3");
-
   activeCrystals = 6;
+  board.classList.add("round3");
+}
+
+function unlockRound8() {
+  crystals[6].classList.remove("hidden");
+  crystals[7].classList.remove("hidden");
+
+  activeCrystals = 8;
+  board.classList.add("round8");
+}
+
+function updateCrystalTheme() {
+  if (round >= 5) {
+    board.classList.add("dark-crystals");
+  } else {
+    board.classList.remove("dark-crystals");
+  }
+}
+
+function setBoardDifficulty() {
+  board.classList.remove("round3", "round8");
+
+  if (round >= 3) board.classList.add("round3");
+  if (round >= 8) board.classList.add("round8");
+
+  updateCrystalTheme();
+}
+
+function resetGameState() {
+  sequence = [];
+  playerSequence = [];
+  level = 0;
+  round = 1;
+  activeCrystals = 4;
+
+  setRound(1);
+  resetScoreSystem();
 }
 
 function nextLevel() {
@@ -125,25 +138,43 @@ function nextLevel() {
   if (level > getMaxLevel()) {
     round++;
 
-    if (round === 2) {
-      showMessage("RODADA 2");
-    } else if (round === 3) {
+    setRound(round);
+
+    if (round === 2) showMessage("RODADA 2");
+    else if (round === 3) {
       showMessage("RODADA 3");
       unlockRound3();
-    } else {
+    }
+    else if (round === 4) showMessage("RODADA 4");
+    else if (round === 5) showMessage("MODO SOMBRIO");
+    else if (round === 6) showMessage("RODADA 6");
+    else if (round === 7) showMessage("RODADA 7");
+    else if (round === 8) {
+      showMessage("RODADA 8");
+      unlockRound8();
+    }
+    else if (round === 9) showMessage("RODADA 9");
+    else if (round === 10) {
       showMessage("VOCÊ VENCEU");
+
       gameStarted = false;
+      canClick = false;
       buttonText.textContent = "Iniciar Jogo";
+
+      const name = prompt("Seu nome:");
+      if (name) addToRanking(name, score);
+
+      resetGameState();
+      resetBoardUI();
       return;
     }
+
+    setBoardDifficulty();
 
     level = 0;
     sequence = [];
 
-    setTimeout(() => {
-      nextLevel();
-    }, 2500);
-
+    setTimeout(() => nextLevel(), 2000);
     return;
   }
 
@@ -152,57 +183,53 @@ function nextLevel() {
 }
 
 function startGame() {
-  sequence = [];
-  playerSequence = [];
-  level = 0;
+  resetGameState();
+
   gameStarted = true;
 
-  board.classList.remove("round3");
+  crystals.forEach(c => c.classList.add("hidden"));
 
-  crystals[4].classList.add("hidden");
-  crystals[5].classList.add("hidden");
+  crystals[0].classList.remove("hidden");
+  crystals[1].classList.remove("hidden");
+  crystals[2].classList.remove("hidden");
+  crystals[3].classList.remove("hidden");
 
-  round = DEBUG_ROUND;
+  board.classList.remove("round3", "round8", "dark-crystals");
 
-  if (DEBUG_ROUND === 3) {
-    activeCrystals = 6;
-    unlockRound3();
-    showMessage("RODADA 3");
-  } else if (DEBUG_ROUND === 2) {
-    activeCrystals = 4;
-    showMessage("RODADA 2");
-  } else {
-    activeCrystals = 4;
-    showMessage("RODADA 1");
-  }
+  setBoardDifficulty();
+
+  showMessage("RODADA 1");
 
   buttonText.textContent = "Reiniciar";
 
-  setTimeout(() => {
-    nextLevel();
-  }, 2200);
+  setTimeout(() => nextLevel(), 2000);
 }
 
 function gameOver() {
   showMessage("GAME OVER");
+
   gameStarted = false;
+  canClick = false;
   buttonText.textContent = "Iniciar Jogo";
+
+  const name = prompt("Seu nome:");
+  if (name) addToRanking(name, score);
+
+  resetGameState();
+  resetBoardUI();
 }
 
 function checkSequence() {
-  const currentMove = playerSequence.length - 1;
+  const i = playerSequence.length - 1;
 
-  if (playerSequence[currentMove] !== sequence[currentMove]) {
+  if (playerSequence[i] !== sequence[i]) {
     gameOver();
     return;
   }
 
   if (playerSequence.length === sequence.length) {
-    canClick = false;
-
-    setTimeout(() => {
-      nextLevel();
-    }, 1000);
+    addScore();
+    setTimeout(() => nextLevel(), 1000);
   }
 }
 
@@ -213,8 +240,19 @@ crystals.forEach((card, index) => {
     if (!gameStarted || !canClick || index >= activeCrystals) return;
 
     flash(card);
-
     playerSequence.push(index);
     checkSequence();
   });
 });
+
+function resetBoardUI() {
+  crystals.forEach((c, i) => {
+    if (i < 4) c.classList.remove("hidden");
+    else c.classList.add("hidden");
+
+    c.classList.remove("active");
+  });
+
+  board.classList.remove("round3", "round8", "dark-crystals");
+  activeCrystals = 4;
+}
