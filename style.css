@@ -1,12 +1,15 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;    
+  box-sizing: border-box;
+  user-select: none;
 }
 
 body {
   margin: 0;
   overflow: hidden;
+  background-image: url(assets/Captura\ de\ tela\ 2026-05-10\ 212627.png);
+  background-size: cover;
 }
 
 header {
@@ -39,7 +42,6 @@ header {
   --header: rgb(204, 102, 18);
   --fCor: rgb(204, 102, 18);
   --tfCor: rgba(0, 0, 0, 0.63);
-  border-bottom: rgba(0, 0, 0, 0.473) solid 0.5px;
   --footer: #ffffff;
   --text: black;
   --tG: rgb(100, 0, 214);
@@ -64,16 +66,6 @@ header {
 #tG {
   color: var(--tG);
   text-shadow: 0px 1px 20px purple;
-}
-
-#bgVideo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
 }
 
 #bMenu {
@@ -131,12 +123,7 @@ header {
 
 a {
   text-decoration: none;
-  user-select: none;
-}
-
-p {
-  user-select: none;
-}
+}  
 
 .menu {
   display: flex;
@@ -306,4 +293,72 @@ footer {
   stroke: white;
   position: relative;
   top: 4.5%;
+}
+
+.genius-board {
+  display: grid;
+  grid-template-columns: repeat(2, 180px);
+  gap: 25px;
+  justify-content: center;
+  position: relative;
+  top: 130px;
+  right: 380px;
+  transition: 0.4s ease;
+}
+
+.genius-board.round3 {
+  grid-template-columns: repeat(3, 180px);
+}
+
+.crystal {
+  width: 180px;
+  height: 220px;
+  border: none;
+  cursor: pointer;
+  border-radius: 24px;
+  background: rgba(0, 0, 27, 0.836);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.crystal:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.crystal-svg {
+  width: 75%;
+  fill: var(--color);
+  filter: drop-shadow(0 0 10px var(--color));
+  transition: .2s;
+}
+
+.shine {
+  fill: rgba(255,255,255,0.25);
+}
+
+.green { --color: #35ff7d; }
+.red { --color: #ff3d57; }
+.blue { --color: #2f8cff; }
+.yellow { --color: #ffc92f; }
+.purple { --color: #a855f7; }
+.cyan { --color: #00e5ff; }
+
+.hidden {
+  display: none;
+}
+
+.crystal.active {
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.08);
+}
+
+.crystal.active .crystal-svg {
+  filter:
+    drop-shadow(0 0 18px var(--color))
+    drop-shadow(0 0 35px var(--color))
+    brightness(1.4);
 }

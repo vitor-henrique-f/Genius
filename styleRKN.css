@@ -2,11 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {
   height: 100vh;
-  background: linear-gradient(to right, rgb(16, 0, 32), rgb(36, 0, 21));
+  background: var(--cBack)
 }
 
 header {
@@ -14,13 +15,53 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgb(0, 0, 27);
+  background-color: var(--header);
   height: 80px;  
   border-bottom: rgba(255, 255, 255, 0.24) solid 0.5px;
 }
 
+:root {
+  --header: rgb(0, 0, 27);
+  --fCor: rgb(0, 0, 27);
+  --tfCor: rgba(255, 255, 255, 0.514);
+  --text: white;
+  --tG: rgb(152, 43, 255);
+  --lCor: rgba(255, 255, 255, 0.596);
+  --lhCor: rgb(255, 255, 255);
+  --iCor: white;
+  --cBarra: #7700ff;
+  --cTiktok: rgba(255, 255, 255, 0.418);
+  --cGithub: rgba(255, 255, 255, 0.418);
+  --cgtHover: white;
+  --cBack: linear-gradient(to right, rgb(16, 0, 32), rgb(36, 0, 21));
+  --bBack: rgb(0, 0, 27);
+  --cbBorder: rgba(255, 255, 255, 0.24);
+  --bShadow: rgba(255, 255, 255, 0.24);
+}
+
+.light-mode {
+  --header: rgb(204, 102, 18);
+  --fCor: rgb(204, 102, 18);
+  --tfCor: rgba(0, 0, 0, 0.63);
+  border-bottom: rgba(0, 0, 0, 0.473) solid 0.5px;
+  --footer: #ffffff;
+  --text: black;
+  --tG: rgb(100, 0, 214);
+  --lCor: rgba(0, 0, 0, 0.39);
+  --lhCor: rgb(255, 255, 255);
+  --iCor: rgb(255, 255, 255);
+  --cBarra: #000000;
+  --cTiktok: rgb(255, 255, 255);
+  --cGithub: rgb(255, 255, 255);
+  --cgtHover: rgb(0, 0, 0);
+  --cBack: linear-gradient(to right, rgb(189, 27, 121), rgb(73, 0, 156));
+  --bBack: rgba(251, 255, 0, 0.562);
+  --cbBorder: rgba(0, 0, 0, 0.411);
+  --bShadow: rgba(0, 0, 0, 0.5);
+}
+
 #tMenu {
-  color: white;
+  color: var(--text);
   font-size: 25px;
   font-family: 'Arial', sans-serif;
   padding-top: 21px;
@@ -29,7 +70,7 @@ header {
 }
 
 #tG {
-  color: rgb(152, 43, 255);
+  color: var(--tG);
 }
 
 #bModo {
@@ -70,7 +111,7 @@ p {
 }
 
 #mInicio, #mComoJogar, #mSobre, #mRanking {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--lCor);
   font-size: 19px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -87,7 +128,7 @@ p {
   bottom: -8px;
   width: 0%;
   height: 3px;
-  background: #7700ff;
+  background: var(--cBarra);
   border-radius: 20px;
   transition: width 0.3s ease;
 }
@@ -96,7 +137,7 @@ p {
 #mComoJogar:hover,
 #mSobre:hover,
 #mRanking:hover {
-  color: white;
+  color: var(--lhCor);
 }
 
 #mInicio:hover::after,
@@ -107,7 +148,7 @@ p {
 }
 
 #mRanking {
-  color: white;
+  color: var(--lCor);
 }
 
 #mRanking::after {
@@ -156,7 +197,7 @@ footer {
   position: relative;
   top: 0;
   left: 0;
-  background-color: rgb(0, 0, 27);
+  background-color: var(--fCor);
   height: 80px;  
   border-top: rgba(255, 255, 255, 0.24) solid 0.5px;
   top: 820px;
@@ -164,14 +205,14 @@ footer {
 
 #tFooter {
   font-size: 19px;
-  color: rgba(255, 255, 255, 0.514);
+  color: var(--tfCor);
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
   top: 2px;
 }
 
 #Github {
-  color: rgba(255, 255, 255, 0.418);
+  color: var(--cGithub);
   width: 35px;
   height: 35px;
   position: relative;
@@ -180,12 +221,12 @@ footer {
 }
 
 #Github:hover, #Tiktok:hover {
-  color: white;
+  color: var(--cgtHover);
   transition: color 0.5s ease;
 }
 
 #Tiktok {
-  color: rgba(255, 255, 255, 0.418);
+  color: var(--cTiktok);
   width: 35px;
   height: 35px;
   position: relative;
@@ -196,10 +237,10 @@ footer {
 .box {
   width: 800px;
   height: 500px;
-  background-color: rgb(0, 0, 27);
+  background-color: var(--bBack);
   border-radius: 40px;
-  border: 1px solid     rgba(255, 255, 255, 0.24);
-  box-shadow: 0 0 23px rgba(255, 255, 255, 0.24);
+  border: 1px solid var(--cbBorder);
+  box-shadow: 0 0 23px var(--bShadow);
   position: absolute;
   top: 50%;
   left: 50%;
