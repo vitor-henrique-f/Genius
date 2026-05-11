@@ -9,5 +9,5 @@ O jogo "Genius" é um classico jogo da memória baseado em cores. Neste reposit�
 
 ## Ferramentas Utilizadas
 
-- VS code
-- Github pages
+- VScode
+- Github Pages
