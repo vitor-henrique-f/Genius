@@ -308,7 +308,6 @@ footer {
   top: 125px;
   right: 190px;
   transition: .4s ease;
-  z-index: -1;
 }
 
 /* 6 cristais (rodada 3+) */
