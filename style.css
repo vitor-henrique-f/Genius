@@ -40,6 +40,9 @@ header {
   --cTiktok: rgba(255, 255, 255, 0.418);
   --cGithub: rgba(255, 255, 255, 0.418);
   --cgtHover: white;
+  --sbCor: rgba(10,10,35,.92);
+  --sbtCor: white;
+  --siCor: #8a2be2;
 }
 
 .light-mode {
@@ -56,6 +59,9 @@ header {
   --cTiktok: rgb(255, 255, 255);
   --cGithub: rgb(255, 255, 255);
   --cgtHover: rgb(0, 0, 0);
+  --sbCor: rgb(151, 151, 255);
+  --sbtCor: rgb(0, 0, 0);
+  --siCor: rgb(80, 0, 127);
 }
 
 #tMenu {
@@ -459,11 +465,11 @@ footer {
 
 .score-box,.help-box{
  width:280px;
- background:rgba(10,10,35,.92);
+ background:var(--sbCor);
  border:1px solid rgba(255,255,255,.12);
  border-radius:18px;
  padding:25px;
- color:white;
+ color:var(--sbtCor);
  backdrop-filter:blur(12px);
 }
 
@@ -475,7 +481,7 @@ footer {
 
 .score-info p{
  font-size:38px;
- color:#8a2be2;
+ color: var(--siCor);
  font-weight:900;
 }
 
@@ -549,4 +555,60 @@ footer {
   body{
     overflow: auto;
   }
+
+  * {
+  scrollbar-width: thin;
+  scrollbar-color: #000000;
+  }
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  }
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+  }
+
+*::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 999px;
+  }
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .menu {
+    left: 410px;
+  }
+
+  #bMenu {
+    left: 85%;
+  }
+
+  #bSom {
+    left: 77%;
+  }
+
+  #bModo {
+    left: 59.3%;
+  }
+
+  .side-panel {
+    right: 60px;
+    z-index: -1;
+  }
+
+  body{
+    overflow: auto;
+  }
+
+  .genius-board{
+    z-index: 0;
+  }
+
 }

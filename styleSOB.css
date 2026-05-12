@@ -310,4 +310,54 @@ footer {
   body{
     overflow: auto;
   }
-} 
+
+  * {
+  scrollbar-width: thin;
+  scrollbar-color: #000000;
+  }
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  }
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+  }
+
+*::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 999px;
+  }
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+  }
+}
+
+@media (max-width: 1300px) {
+  .menu {
+    left: 530px;
+  }
+
+  #bSom {
+    left: 85%;
+  }
+
+  #bModo {
+    left: 82%;
+  }
+
+  .side-panel {
+    right: 60px;
+  }
+
+  body{
+    overflow: auto;
+  }
+
+  .box{
+    position: relative;
+    top: 360px;
+  }
+}
