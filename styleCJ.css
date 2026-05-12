@@ -257,6 +257,7 @@ footer {
   font-size: 25px;
   padding: 50px;
   text-indent: 1em;
+  z-index: -1;
 }
 
 #l1, #l2, #l3, #l4, #l5 {
@@ -331,4 +332,26 @@ ol li::before {
   stroke: white;
   position: relative;
   top: 4.5%;
+}
+
+@media (max-width: 1500px) {
+  .menu {
+    left: 530px;
+  }
+
+  #bSom {
+    left: 85%;
+  }
+
+  #bModo {
+    left: 82%;
+  }
+
+  .side-panel {
+    right: 60px;
+  }
+
+  body{
+    overflow: auto;
+  }
 }

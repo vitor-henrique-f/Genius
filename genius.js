@@ -76,16 +76,16 @@ function playSequence() {
 }
 
 function getMaxLevel() {
-  if (round === 1) return 3;
-  if (round === 2) return 4;
-  if (round === 3) return 5;
-  if (round === 4) return 6;
-  if (round === 5) return 7;
-  if (round === 6) return 8;
-  if (round === 7) return 9;
-  if (round === 8) return 10;
-  if (round === 9) return 11;
-  if (round === 10) return 12;
+  if (round === 1) return 1;
+  if (round === 2) return 1;
+  if (round === 3) return 1;
+  if (round === 4) return 1;
+  if (round === 5) return 1;
+  if (round === 6) return 1;
+  if (round === 7) return 1;
+  if (round === 8) return 1;
+  if (round === 9) return 1;
+  if (round === 10) return 1;
 }
 
 function unlockRound3() {

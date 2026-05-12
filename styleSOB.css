@@ -258,6 +258,7 @@ footer {
   padding: 30px;
   text-indent: 1em;
   text-shadow: 0px 1px 10px var(--tbShadow);
+  z-index: -1;
 }
 
 #bSom {
@@ -287,4 +288,26 @@ footer {
   stroke: white;
   position: relative;
   top: 4.5%;
+}
+
+@media (max-width: 1500px) {
+  .menu {
+    left: 530px;
+  }
+
+  #bSom {
+    left: 85%;
+  }
+
+  #bModo {
+    left: 82%;
+  }
+
+  .side-panel {
+    right: 60px;
+  }
+
+  body{
+    overflow: auto;
+  }
 }
