@@ -236,8 +236,6 @@ footer {
   justify-content: center;
   width: 100%;
   position: relative;
-  top: 0;
-  left: 0;
   background-color: var(--fCor);
   transition: 0.4s ease;
   height: 80px;  
@@ -536,8 +534,17 @@ footer {
     left: 500px;
   }
 
+  .genius-board {
+    top: 53px;
+    right: 200px;
+  }
+
   #bMenu {
     left: 85%;
+  }
+
+  footer {
+    top: 688px;
   }
 
   #bSom {
@@ -545,15 +552,12 @@ footer {
   }
 
   #bModo {
-    left: 62.5%;
+    left: 61.2%;
   }
 
   .side-panel {
-    right: 60px;
-  }
-
-  body{
-    overflow: auto;
+    right: 120px;
+    top: 178px
   }
 
   * {
@@ -577,38 +581,6 @@ footer {
 
 *::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
-  }
-
-}
-
-@media (max-width: 1300px) {
-  .menu {
-    left: 410px;
-  }
-
-  #bMenu {
-    left: 85%;
-  }
-
-  #bSom {
-    left: 77%;
-  }
-
-  #bModo {
-    left: 59.3%;
-  }
-
-  .side-panel {
-    right: 60px;
-    z-index: -1;
-  }
-
-  body{
-    overflow: auto;
-  }
-
-  .genius-board{
-    z-index: 0;
   }
 
 }
